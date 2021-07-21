@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from 'react'
+import { DifficultyButtons } from './components/DifficultyButtons'
+import { GameTiles } from './components/GameTiles'
+import { HighScores } from './components/HighScores'
+import { MainContext } from './utils/MainContext'
+import { GlobalStyles } from './styles/globalStyles'
+import { theme } from './styles/theme'
+import { Styled } from './styles/App.styles'
+import { ThemeProvider } from 'styled-components'
 
-function App() {
+const App: React.FC = () => {
+  const { hasGameEnded } = useContext(MainContext)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+
+      <Styled.Container>
+        <Styled.MainTitle>Memory Game</Styled.MainTitle>
+        <DifficultyButtons />
+        <GameTiles />
+        {hasGameEnded && <Styled.Message>You've won the game!</Styled.Message>}
+        <HighScores />
+      </Styled.Container>
+    </ThemeProvider>
+  )
 }
 
-export default App;
+export default App
