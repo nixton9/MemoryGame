@@ -10,17 +10,23 @@ declare module 'styled-components' {
     spacingL: string
     spacingXL: string
     accent: string
-    title: string
-    text: string
-    white: string
-    lightGrey: string
+    background?: string
+    lightBackground?: string
+    text?: string
+    lightText?: string
+    buttonText?: string
+    fontThin: number
+    fontRegular: number
+    fontMedium: number
+    fontBold: number
+    fontBlack: number
     borderRadius: string
     gameColors: {}[]
   }
 }
 
 export const theme: DefaultTheme = {
-  fontFamily: 'sans-serif',
+  fontFamily: "'Noto Sans KR', sans-serif;",
   spacingXXS: '1rem',
   spacingXS: '1.5rem',
   spacingS: '3rem',
@@ -28,11 +34,12 @@ export const theme: DefaultTheme = {
   spacingL: '9rem',
   spacingXL: '12rem',
   accent: '#18BEBE',
-  title: '#121212',
-  text: '#444444',
-  white: '#ffffff',
-  lightGrey: '#eaeaea',
-  borderRadius: '8px',
+  fontThin: 100,
+  fontRegular: 400,
+  fontMedium: 500,
+  fontBold: 700,
+  fontBlack: 900,
+  borderRadius: '4px',
   gameColors: [
     { red: '#F44336' },
     { pink: '#E91E63' },
@@ -50,4 +57,22 @@ export const theme: DefaultTheme = {
     { blueGrey: '#607D8B' },
     { black: '#000000' }
   ]
+}
+
+export const lightTheme: DefaultTheme = {
+  ...theme,
+  background: '#F7F7F7',
+  lightBackground: '#FFFFFF',
+  text: '#484848',
+  lightText: '#5C5C5C',
+  buttonText: '#FFFFFF'
+}
+
+export const darkTheme: DefaultTheme = {
+  ...theme,
+  background: '#262626',
+  lightBackground: '#363636',
+  text: '#FFFFFF',
+  lightText: '#F7F7F7',
+  buttonText: '#262626'
 }

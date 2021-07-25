@@ -11,29 +11,48 @@ interface BackProps {
 const Container = styled.div`
   margin-top: ${({ theme }) => theme.spacingM};
   text-align: center;
+
+  @media only screen and (max-width: 750px) {
+    font-size: 90%;
+  }
+  @media only screen and (max-width: 650px),
+    only screen and (max-height: 1050px) {
+    font-size: 75%;
+  }
+  @media only screen and (max-width: 550px) {
+    font-size: 60%;
+  }
+  @media only screen and (max-width: 450px) {
+    font-size: 45%;
+  }
+  @media only screen and (max-width: 315px) {
+    font-size: 38%;
+  }
 `
 
 const TilesBackground = styled.div<ContainerProps>`
   display: inline-block;
-  background: ${({ theme }) => theme.lightGrey};
+  position: relative;
+  background: ${({ theme }) => theme.lightBackground};
   padding: ${({ theme }) => theme.spacingXS};
+  border-radius: ${({ theme }) => theme.borderRadius};
   min-width: ${props =>
     props.numberOfTiles === 20
-      ? '54rem'
+      ? '54em'
       : props.numberOfTiles === 30
-      ? '67rem'
-      : '41rem'};
+      ? '67em'
+      : '41em'};
   min-height: ${props =>
     props.numberOfTiles === 20
-      ? '67rem'
+      ? '67em'
       : props.numberOfTiles === 30
-      ? '80rem'
-      : '54rem'};
+      ? '80em'
+      : '54em'};
 `
 
 const TilesContainer = styled.div<ContainerProps>`
   display: grid;
-  grid-gap: 1rem;
+  grid-gap: 1em;
   grid-template-columns: ${props =>
     props.numberOfTiles === 20
       ? '1fr 1fr 1fr 1fr'
@@ -44,10 +63,9 @@ const TilesContainer = styled.div<ContainerProps>`
 
 const TileContainer = styled.div`
   position: relative;
-  width: 12rem;
-  height: 12rem;
+  width: 12em;
+  height: 12em;
   border-radius: 4px;
-  background: red;
   perspective: 900px;
   background-color: transparent;
 
@@ -63,7 +81,7 @@ const TileContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 5rem;
+    font-size: 5em;
   }
 `
 
@@ -77,15 +95,22 @@ const Tile = styled.div`
   &.active {
     transform: rotateY(-180deg);
   }
+
+  &:not(.active)  {
+    cursor: pointer;
+  }
 `
 
 const Front = styled.div`
-  background: red;
+  background: url('/tile.png');
+  background-size: cover;
+  background-position: center center;
   position: absolute;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
   border-radius: 4px;
+  box-shadow: 0 7px 11px rgba(0, 0, 0, 0.14);
 `
 
 const Back = styled.div<BackProps>`
@@ -95,7 +120,22 @@ const Back = styled.div<BackProps>`
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  border-radius: 4px;
+  border-radius: ${({ theme }) => theme.borderRadius};
+  box-shadow: 0 7px 11px rgba(0, 0, 0, 0.14);
+`
+
+const Message = styled.p`
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  text-align: center;
+  color: ${({ theme }) => theme.text};
+  font-size: 1.9rem;
+  line-height: 3.2rem;
+  font-weight: ${({ theme }) => theme.fontThin};
+  padding: 0 ${({ theme }) => theme.spacingXS};
 `
 
 export const Styled = {
@@ -105,5 +145,6 @@ export const Styled = {
   TileContainer,
   Tile,
   Front,
-  Back
+  Back,
+  Message
 }

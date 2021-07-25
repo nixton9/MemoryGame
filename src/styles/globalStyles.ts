@@ -10,34 +10,39 @@ export const GlobalStyles = createGlobalStyle`
     html {
         font-size: 62.5%;
 
-      /*   @media only screen and (max-width: 750px) {
-            font-size: 54.5%;
+        @media only screen and (max-width: 375px) {
+            font-size: 53.5%;
         }
-
-        @media only screen and (max-width: 630px) {
-            font-size: 54.5%;
-        } */
+    }
 
     body {
         font-family: ${({ theme }) => theme.fontFamily};
+        background: ${({ theme }) => theme.background};
+        color: ${({ theme }) => theme.text};
     }
 
     button {
         border: none;
         box-shadow: none;
-        padding: ${({ theme }) => theme.spacingXXS} ${({ theme }) =>
-  theme.spacingXS};
-        margin: .5rem;
+        padding: ${({ theme }) => theme.spacingXS};
+        min-width: 11rem;
+        margin: .5rem ${({ theme }) => theme.spacingXS};
         border-radius: ${({ theme }) => theme.borderRadius};
         background: ${({ theme }) => theme.text};
-        color: ${({ theme }) => theme.white};
-        font-size: 1.5rem;
-        font-weight: 600;
+        color: ${({ theme }) => theme.buttonText};
+        font-size: 1.6rem;
+        font-weight: ${({ theme }) => theme.fontMedium};
+        letter-spacing: .06rem;
         cursor: pointer;
+        transition: all .25s ease;
 
         &:disabled {
             cursor:not-allowed;
             opacity: .75;
+        }
+
+        &:not(:disabled):hover {
+            background-color: ${({ theme }) => theme.accent};
         }
     }
 `

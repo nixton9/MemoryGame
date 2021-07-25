@@ -7,7 +7,7 @@ export const Timer: React.FC = () => {
 
   const { hasGameEnded, difficulty, addNewScore } = useContext(MainContext)
 
-  let stopWatch: any = useRef(null)
+  let stopWatch = useRef<any>(null)
 
   useEffect(() => {
     stopWatch.current = setInterval(() => {
@@ -21,18 +21,20 @@ export const Timer: React.FC = () => {
   useEffect(() => {
     if (hasGameEnded) {
       clearInterval(stopWatch.current)
-      addNewScore(getFormatedTime(), difficulty)
+      addNewScore(getFormatedTime(true), difficulty)
     }
   }, [hasGameEnded])
 
-  const getFormatedTime = () => {
+  const getFormatedTime = (withoutHours?: boolean) => {
     const getSeconds = `0${time % 60}`.slice(-2)
     const minutes = `${Math.floor(time / 60)}`
     // @ts-ignore
     const getMinutes = `0${minutes % 60}`.slice(-2)
     const getHours = `0${Math.floor(time / 3600)}`.slice(-2)
-
-    return `${getHours} : ${getMinutes} : ${getSeconds}`
+    console.log(getHours)
+    return withoutHours
+      ? `${getMinutes} : ${getSeconds}`
+      : `${getHours} : ${getMinutes} : ${getSeconds}`
   }
 
   return (

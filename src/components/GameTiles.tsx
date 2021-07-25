@@ -79,7 +79,7 @@ export const GameTiles: React.FC = () => {
         const newTiles = tiles.map(tile =>
           activeTiles.includes(tile.id) ? { ...tile, isDone: true } : tile
         )
-        setTiles(newTiles)
+        setTimeout(() => setTiles(newTiles), 200)
         setActiveTiles([])
       } else {
         let timer = setTimeout(() => {
@@ -102,7 +102,7 @@ export const GameTiles: React.FC = () => {
   return (
     <Styled.Container>
       <Styled.TilesBackground numberOfTiles={tilesNumber}>
-        {Boolean(tiles.length) && (
+        {Boolean(tiles.length) ? (
           <Styled.TilesContainer numberOfTiles={tilesNumber}>
             {tiles.map(tile => (
               <Tile
@@ -116,6 +116,11 @@ export const GameTiles: React.FC = () => {
               />
             ))}
           </Styled.TilesContainer>
+        ) : (
+          <Styled.Message>
+            Match the tiles that have the same color.
+            <br /> Press 'Start' to start the game.
+          </Styled.Message>
         )}
       </Styled.TilesBackground>
 

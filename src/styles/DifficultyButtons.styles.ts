@@ -8,7 +8,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: ${({ theme }) => theme.spacingXS};
+  margin-top: ${({ theme }) => theme.spacingS};
 `
 
 const Button = styled.button<ButtonProps>`

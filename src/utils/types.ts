@@ -4,6 +4,10 @@ export enum Difficulties {
   HARD = 30
 }
 
+export enum Theme {
+  LIGHT = 'LIGHT',
+  DARK = 'DARK'
+}
 export interface TileProps {
   id: number
   background: string

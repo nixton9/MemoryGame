@@ -1,21 +1,16 @@
 import styled from 'styled-components/macro'
 
 const Container = styled.div`
-  padding: ${({ theme }) => theme.spacingS};
+  padding: ${({ theme }) => theme.spacingM} ${({ theme }) => theme.spacingS};
 `
 
 const MainTitle = styled.h1`
-  font-size: 2rem;
-  color: ${({ theme }) => theme.title};
+  font-size: 2.4rem;
+  font-weight: ${({ theme }) => theme.fontBlack};
   text-align: center;
-`
-
-const Message = styled.div`
-  font-size: 1.5rem;
 `
 
 export const Styled = {
   Container,
-  MainTitle,
-  Message
+  MainTitle
 }
