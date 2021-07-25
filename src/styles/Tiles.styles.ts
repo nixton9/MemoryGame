@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro'
+import tile from '../assets/tile.png'
 
 interface ContainerProps {
   numberOfTiles: number
@@ -102,7 +103,7 @@ const Tile = styled.div`
 `
 
 const Front = styled.div`
-  background: url('/tile.png');
+  background: url(${tile});
   background-size: cover;
   background-position: center center;
   position: absolute;
